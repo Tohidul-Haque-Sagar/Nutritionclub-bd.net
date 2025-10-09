@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutrition Club Bangladesh - Empowering Youth Through Nutrition</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -30,29 +31,28 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
+            overflow-x: hidden;
         }
 
         /* Header Styles */
         .header {
             background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
             color: white;
-            padding: 0.5rem 0;
+            padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(45, 80, 22, 0.3);
-            /* border: 1px solid red; */
         }
-        
+
         .nav-container {
-            max-width: 1600px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            /* padding: 0 20px; */
-            /* border: 1px solid red; */
+            padding: 0 20px;
         }
 
         .logo {
@@ -61,11 +61,12 @@
             font-size: 1.5rem;
             font-weight: bold;
             margin-right: 20px;
+            z-index: 1001;
         }
 
         .logo img {
-            width: 100px;
-            height: 100px;
+            width: 60px;
+            height: 60px;
             margin-right: 15px;
             border-radius: 50%;
             border: 3px solid var(--accent-green);
@@ -74,11 +75,9 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            /* gap: 1rem; */
-            gap: 0.4rem;
+            gap: 1rem;
             justify-content: center;
             align-items: center;
-            font-weight: bold;
         }
 
         .nav-menu a {
@@ -90,7 +89,6 @@
             position: relative;
             overflow: hidden;
             display: inline-block;
-            /* border: 1px solid red; */
             align-items: center;
             width: auto;
         }
@@ -105,7 +103,6 @@
             background: var(--accent-green);
             transition: left 0.3s ease;
             z-index: -1;
-            
         }
 
         .nav-menu a:hover::before {
@@ -121,6 +118,7 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
+            z-index: 1001;
         }
 
         .hamburger span {
@@ -146,21 +144,9 @@
             padding: 0 20px;
             position: relative;
             overflow: hidden;
+            margin-top: 80px;
         }
-        .hero1 {
-            /* background: linear-gradient(rgba(45, 80, 22, 0.85), rgba(74, 124, 89, 0.85)), 
-                        radial-gradient(circle at 20% 80%, var(--accent-green) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, var(--light-green) 0%, transparent 50%),
-                        linear-gradient(45deg, var(--mint-green), var(--sage-green)); */
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding: 0 20px;
-            position: relative;
-            overflow: hidden;
-        }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -289,33 +275,58 @@
             margin: 2rem auto;
             box-shadow: 0 10px 30px rgba(45, 80, 22, 0.1);
         }
-/* Gallery Section */
+
+        /* Gallery Section */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             margin-top: 50px;
         }
 
         .gallery-item {
-            height: 250px;
-            background: var(--light-gray);
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-gray);
-            border: 2px dashed var(--medium-green);
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 4/3;
             transition: transform 0.3s ease;
         }
 
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
         .gallery-item:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(45, 80, 22, 0.8));
+            padding: 20px;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
         }
 
         /* About Section */
         .about-text{
-            /* border: 1px solid red; */
             justify-content: center;
         }
         .about-header{
@@ -328,8 +339,6 @@
             gap: 3rem;
             align-items: center;
             margin-top: 3rem;
-            /* border: 1px solid red; */
-
         }
 
         .about-text h3 {
@@ -342,6 +351,8 @@
 
         .about-image {
             text-align: center;
+            flex: 1;
+            min-width: 300px;
         }
 
         .about-image img {
@@ -361,8 +372,6 @@
             max-width: 1200px;
             justify-content: center;
         }
-
-
 
         /* Features Grid */
         .features-grid {
@@ -776,10 +785,15 @@
                 transition: 0.3s;
                 box-shadow: 0 10px 27px rgba(45, 80, 22, 0.3);
                 padding: 2rem 0;
+                z-index: 999;
             }
 
             .nav-menu.active {
                 left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1rem 0;
             }
 
             .hero h1 {
@@ -791,7 +805,7 @@
             }
 
             .about-grid {
-                grid-template-columns: 1fr;
+                flex-direction: column;
                 gap: 2rem;
             }
 
@@ -817,6 +831,10 @@
             .contact-section {
                 padding: 2rem;
             }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
         }
 
         @media (max-width: 480px) {
@@ -832,6 +850,10 @@
             .involvement-card {
                 padding: 1.5rem;
             }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -839,8 +861,10 @@
     <!-- Header -->
     <header class="header">
         <div class="nav-container">
-            <div class="logo" >
-                <a href="#home"><img src="Nutrition Club_Green...jpg" alt="LOGO"></a>
+            <div class="logo">
+                <div style="width: 60px; height: 60px; background: var(--accent-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                    <span style="color: var(--forest-green); font-weight: bold;">NC</span>
+                </div>
                 Nutrition Club
             </div>
             <nav>
@@ -873,107 +897,10 @@
             <p>Ignite the Spark of Young People! Building healthy minds and bodies through nutrition education and leadership development for a sustainable future.</p>
             <div class="cta-buttons">
                 <a href="#involved" class="btn btn-primary">Join Nutrition Club</a>
-                <!-- <a href="#elearning" class="btn btn-secondary">Start e-Learning</a> -->
-                 <a href="https://e-pushti.net/" target="_blank" class="btn btn-secondary">Start e-Learning</a>
+                <a href="#elearning" class="btn btn-secondary">Start e-Learning</a>
             </div>
         </div>
     </section>
-
- <!-- Slider Section -->
-<style>
-    /* Slider Container */
-.slider-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1;
-}
-
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.slide.active {
-  opacity: 1;
-}
-
-/* Slider Dots */
-.slider-dots {
-  position: absolute;
-  bottom: 20px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  z-index: 1;
-}
-
-.dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.6);
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.dot.active,
-.dot:hover {
-  background: var(--accent-green);
-}
-
-</style>
-
-<!-- Hero Section with Image Slider -->
-<section id="home1" class="hero1">
-  <div class="slider-container">
-    <!-- Slide 1 -->
-    <div class="slide active" style= "width: 100%; height: 100%; background-image: url('BTRI\ School.jpg');"></div>
-    <!-- Slide 2 -->
-    <div class="slide" style="background-image: url('2.JPG');"></div>
-    <!-- Slide 3 -->
-    <div class="slide" style="background-image: url('1.JPG');"></div>
-    <!-- Slide 4 -->
-    <div class="slide" style="background-image: url('1.JPG');"></div>
-    <!-- Slide 5 -->
-    <div class="slide" style="background-image: url('1.JPG');"></div>
-  </div>
-
-  <!-- Hero Text Content -->
-  <!-- <div class="hero-content">
-    <h1>Leading Through Innovation</h1>
-    <p>
-      Ignite the Spark of Young People! Join the Nutrition Club platform to engage adolescents and 
-      youth in achieving healthy body and mind, with the skills to make informed decisions and lead 
-      healthy lifestyles.
-    </p>
-    <div class="cta-buttons">
-      <a href="#get-involved" class="btn btn-primary">Join Now</a>
-      <a href="#about" class="btn btn-secondary">Learn More</a>
-    </div>
-  </div> -->
-
-  <!-- Slider Dots -->
-  <div class="slider-dots">
-    <span class="dot active" data-slide="0"></span>
-    <span class="dot" data-slide="1"></span>
-    <span class="dot" data-slide="2"></span>
-    <span class="dot" data-slide="3"></span>
-    <span class="dot" data-slide="4"></span>
-</div>
-</section>
-
-
-<!-- home page slider js --> 
 
     <!-- About Section -->
     <section id="about" class="section">
@@ -984,13 +911,22 @@
         
         <div class="about-grid">
             <div class="about-text">
-                <Section class="about-header">               
-                <h3>What is Nutrition Club?</h3>
-                <div class="green-badge">Ignite the Spark of Young People!</div>
-            </Section>
+                <section class="about-header">               
+                    <h3>What is Nutrition Club?</h3>
+                    <div class="green-badge">Ignite the Spark of Young People!</div>
+                </section>
                 <p>The Nutrition Club provides a platform for adolescents and youth to build capacity, disseminate knowledge, and raise awareness about nutrition. Being part of the Nutrition Club is more than just nutrition and health - it's a lifestyle.</p>
                 <p>Having the confidence and skills to lead healthy lifestyles not only improves overall well-being; it enables them to tackle life's challenges today and become leaders in their lives, careers, and communities as they grow into responsible adulthood.</p>
-                <div class="green-divider"></div>
+            </div>
+            <div class="about-image">
+                <div style="width: 100%; height: 300px; background: var(--light-green); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    Nutrition Club Image
+                </div>
+            </div>
+        </div>
+        
+        <div class="green-divider"></div>
+        
         <div style="text-align: center; margin: 2rem 0;">
             <h3 style="color: var(--primary-green); font-size: 1.8rem; margin-bottom: 2rem;">We Believe in</h3>
         </div>
@@ -1019,28 +955,101 @@
         </div>
     </section>
 
-    
-     <!-- Our Causes Section -->
-    <section class="our-causes" id="causes">
-    <div class="container">
-        <h2 class="section-title">Our Causes</h2>
-        <h3 class="cause-subtitle">Nourishing the Future</h3>
-        <p class="cause-description">
-        Nutrition Club is mandated to build leadership skills and create opportunities for young people to
-        improve nutrition for all. NC envisions creating a well-nourished society to support national and
-        global efforts to end malnutrition across Bangladesh and globally.
-        </p>
-        <h4 class="belief-title">We Believe in</h4>
-        <ul class="belief-list">
-        <li>Equity that can transform ordinary to extraordinary;</li>
-        <li>All young people have potential to grow and lead;</li>
-        <li>Creating opportunity for young people to become empowered, confident, hardworking, determined, responsible, and compassionate—seeing a world beyond themselves so that they have the life-long skills to succeed in education and career;</li>
-        <li>Nutrition Clubs pave the path to create positive learning experiences;</li>
-        <li>Creating safe, diverse, and inclusive environments;</li>
-        <li>Meeting young people wherever they are.</li>
-        </ul>
-    </div>
+    Gallery Section
+    <section id="gallery" class="section">
+        <h2 class="section-title">Gallery</h2>
+        <p class="section-content" style="text-align: center;">Moments from our journey towards better nutrition</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div style="width: 100%; height: 100%; background: var(--light-green); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    Image 1
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Community Nutrition Event</h3>
+                    <p>Youth engagement in nutrition awareness</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div style="width: 100%; height: 100%; background: var(--secondary-green); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    Image 2
+                </div>
+                <div class="gallery-overlay">
+                    <h3>School Program</h3>
+                    <p>Nutrition education in schools</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div style="width: 100%; height: 100%; background: var(--olive-green); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    Image 3
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Training Session</h3>
+                    <p>Youth leadership development</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div style="width: 100%; height: 100%; background: var(--sage-green); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    Image 4
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Health Workshop</h3>
+                    <p>Practical nutrition workshops</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div style="width: 100%; height: 100%; background: var(--accent-green); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    Image 5
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Community Outreach</h3>
+                    <p>Spreading nutrition awareness</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div style="width: 100%; height: 100%; background: var(--primary-green); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    Image 6
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Cooking Demo</h3>
+                    <p>Healthy cooking demonstrations</p>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <!-- Our Causes Section -->
+    <section class="our-causes" id="causes">
+        <h2 class="section-title">Our Causes</h2>
+        <h3 style="text-align: center; color: var(--primary-green); margin-bottom: 1rem;">Nourishing the Future</h3>
+        <p class="section-content">
+            Nutrition Club is mandated to build leadership skills and create opportunities for young people to
+            improve nutrition for all. NC envisions creating a well-nourished society to support national and
+            global efforts to end malnutrition across Bangladesh and globally.
+        </p>
+        <h4 style="color: var(--secondary-green); margin: 2rem 0 1rem 0;">We Believe in</h4>
+        <ul style="list-style-type: none;">
+            <li style="padding: 0.5rem 0; position: relative; padding-left: 30px;">
+                <span style="position: absolute; left: 0;">🌱</span> Equity that can transform ordinary to extraordinary;
+            </li>
+            <li style="padding: 0.5rem 0; position: relative; padding-left: 30px;">
+                <span style="position: absolute; left: 0;">🌱</span> All young people have potential to grow and lead;
+            </li>
+            <li style="padding: 0.5rem 0; position: relative; padding-left: 30px;">
+                <span style="position: absolute; left: 0;">🌱</span> Creating opportunity for young people to become empowered, confident, hardworking, determined, responsible, and compassionate—seeing a world beyond themselves so that they have the life-long skills to succeed in education and career;
+            </li>
+            <li style="padding: 0.5rem 0; position: relative; padding-left: 30px;">
+                <span style="position: absolute; left: 0;">🌱</span> Nutrition Clubs pave the path to create positive learning experiences;
+            </li>
+            <li style="padding: 0.5rem 0; position: relative; padding-left: 30px;">
+                <span style="position: absolute; left: 0;">🌱</span> Creating safe, diverse, and inclusive environments;
+            </li>
+            <li style="padding: 0.5rem 0; position: relative; padding-left: 30px;">
+                <span style="position: absolute; left: 0;">🌱</span> Meeting young people wherever they are.
+            </li>
+        </ul>
+    </section>
+
     <!-- Programs Section -->
     <section id="programs" class="section">
         <h2 class="section-title">Nutrition Club Programs Engage Youth to Lead in Nutrition</h2>
@@ -1288,96 +1297,6 @@
         </div>
     </section>
 
-    <!-- News & Features Section -->
-    <section id="news" class="section">
-        <h2 class="section-title">News & Features</h2>
-        <div class="green-badge" style="display: block; text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">Get Your NC Souvenir - Updated information, activity news, announcements available here</div>
-        
-        <div class="section-content">
-            <div style="background: linear-gradient(135deg, white, var(--mint-green)); padding: 3rem; border-radius: 20px; margin-bottom: 2rem; box-shadow: 0 15px 40px rgba(45, 80, 22, 0.15); border: 2px solid var(--accent-green);">
-                <h4 style="color: var(--primary-green); margin-bottom: 1.5rem; font-size: 1.6rem;">🎁 BIID Foundation Launched Nutrition Club Store</h4>
-                <p>BIID Foundation launched the Nutrition Club Store, an initiative to provide a centralized source of supplies NC materials. This aimed to foster a sense of belonging and increase public awareness of the Nutrition Club initiative and its activities by offering items featuring the NC emblem.</p>
-                <p>It was also intended to support the Nutrition Clubs to mobilize resources to meet their needs to conduct activities and promote the NC locally.</p>
-                <div class="green-divider"></div>
-                <p><strong>Being part of the Nutrition Club is more than just health - it's a lifestyle, a family.</strong> Take the memory with YOU - own a souvenir that speaks to your wellness journey.</p>
-            </div>
-            
-            <div style="text-align: center; background: var(--mint-green); padding: 2rem; border-radius: 15px;">
-                <p style="font-style: italic; color: var(--text-dark); margin-bottom: 1.5rem; font-size: 1.1rem;">Stay tuned for more updates, activity news, and announcements!</p>
-                <a href="#contact" class="btn btn-primary">Subscribe to Updates</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Events Section -->
-    <section id="events" class="section">
-        <h2 class="section-title">Events</h2>
-        
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🏆</div>
-                <h3>International Nutrition Olympiad (INO)</h3>
-                <p>Annual global competition engaging youth in nutrition knowledge and awareness to transform local, national & global food systems.</p>
-                <div class="green-badge">Global Competition</div>
-                <a href="#contact" class="btn btn-primary">Learn More</a>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">📅</div>
-                <h3>National Nutrition Week</h3>
-                <p>Week-long celebration promoting nutrition awareness across Bangladesh as part of national development agenda.</p>
-                <div class="green-badge">National Event</div>
-                <a href="#contact" class="btn btn-primary">Join Event</a>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🎉</div>
-                <h3>Day Celebrations</h3>
-                <p>Various international and national day celebrations throughout the year including World Food Day, Girl Child Day, and 16 Days Activism.</p>
-                <div class="green-badge">Year Round</div>
-                <a href="#contact" class="btn btn-primary">View Calendar</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- NC Shop Section -->
-    <section id="shop" class="section">
-        <h2 class="section-title">🛍️ NC Shop - Supporting a Cause!</h2>
-        <div class="section-content">
-            <p><strong>Being part of the Nutrition Club is more than just health - it's a lifestyle, a family.</strong> Take the memory with YOU - own a souvenir that speaks to your wellness journey.</p>
-            
-            <div style="background: linear-gradient(135deg, var(--mint-green), #d4f1d4); padding: 3rem; border-radius: 20px; text-align: center; margin: 2rem 0; box-shadow: 0 15px 40px rgba(45, 80, 22, 0.15); border: 3px solid var(--accent-green);">
-                <h4 style="color: var(--primary-green); margin-bottom: 2rem; font-size: 1.8rem;">Get Your NC Souvenir</h4>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-                    <div>
-                        <div class="feature-icon">📞</div>
-                        <p><strong>Call:</strong> 01782-510089</p>
-                    </div>
-                    <div>
-                        <div class="feature-icon">📧</div>
-                        <p><strong>Email:</strong> nc@biid.org.bd</p>
-                    </div>
-                    <div>
-                        <div class="feature-icon">💳</div>
-                        <p><strong>bKash:</strong> 01782-510089 (Merchant)</p>
-                    </div>
-                    <div>
-                        <div class="feature-icon">📘</div>
-                        <p><strong>Facebook:</strong> <a href="https://www.facebook.com/NutritionClubStoreBD" target="_blank" style="color: var(--primary-green);">NutritionClubStoreBD</a></p>
-                    </div>
-                </div>
-
-                <div class="green-badge" style="font-size: 1.1rem; margin: 1rem 0;">Payment System: Advance</div>
-                
-                <div style="margin-top: 2rem;">
-                    <a href="#contact" class="btn btn-primary">Order Now</a>
-                    <p style="margin-top: 1rem; font-style: italic; color: var(--text-dark);">If you want to promote Nutrition Club souvenir in your Club feel free to contact us.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact" class="section">
         <h2 class="section-title">Contact Us</h2>
@@ -1468,44 +1387,6 @@
                 </form>
             </div>
         </div>
-        
-        <!-- Application Forms Section -->
-        <div style="margin-top: 4rem;">
-            <h3 style="text-align: center; color: var(--primary-green); margin-bottom: 3rem; font-size: 2rem;">Quick Application Forms</h3>
-            <div class="involvement-grid">
-                <div class="involvement-card">
-                    <div class="feature-icon">👤</div>
-                    <h4>Membership Form</h4>
-                    <p>Join as a member (Ages 10-25)</p>
-                    <div class="green-badge">Individual Application</div>
-                    <a href="mailto:nc@biid.org.bd?subject=Membership Application" class="btn btn-primary">Apply Now</a>
-                </div>
-                
-                <div class="involvement-card">
-                    <div class="feature-icon">💰</div>
-                    <h4>Sponsorship Form</h4>
-                    <p>Support our activities and initiatives (Cash/Kind)</p>
-                    <div class="green-badge">Cash or Kind Support</div>
-                    <a href="mailto:nc@biid.org.bd?subject=Sponsorship Inquiry" class="btn btn-primary">Become Sponsor</a>
-                </div>
-                
-                <div class="involvement-card">
-                    <div class="feature-icon">🤝</div>
-                    <h4>Patron Form</h4>
-                    <p>Support specific activities: NC Store, Training, Workshop, Painting Competition, Boot Camp, Nutri Garden, MHM Corner</p>
-                    <div class="green-badge">Activity/Kind Support</div>
-                    <a href="mailto:nc@biid.org.bd?subject=Patron Application" class="btn btn-primary">Become Patron</a>
-                </div>
-                
-                <div class="involvement-card">
-                    <div class="feature-icon">💬</div>
-                    <h4>Feedback Form</h4>
-                    <p>General feedback and inquiries</p>
-                    <div class="green-badge">General Feedback</div>
-                    <a href="mailto:nc@biid.org.bd?subject=General Feedback" class="btn btn-primary">Send Feedback</a>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Footer -->
@@ -1562,32 +1443,7 @@
             </div>
         </div>
     </footer>
-    <!-- home page slider JS -->
-    <script>
-  let currentSlide = 0;
-  const slides = document.querySelectorAll(".slide");
-  const dots = document.querySelectorAll(".dot");
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle("active", i === index);
-      dots[i].classList.toggle("active", i === index);
-    });
-    currentSlide = index;
-  }
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      showSlide(index);
-    });
-  });
-
-  setInterval(() => {
-    let nextSlide = (currentSlide + 1) % slides.length;
-    showSlide(nextSlide);
-  }, 5000); // 5s interval
-</script>
-    <!-- JavaScript for interactivity -->
     <script>
         // Mobile menu toggle
         const hamburger = document.querySelector('.hamburger');
@@ -1621,70 +1477,14 @@
             });
         });
 
-        // Enhanced form submission with all PDF requirements
+        // Form submission
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const formData = new FormData(this);
-            const subject = formData.get('subject');
-            const category = formData.get('category');
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
-            const institution = formData.get('institution');
-            const phone = formData.get('phone');
-            const address = formData.get('address');
-            
-            // Create comprehensive email body based on form type
-            let emailBody = `
-NUTRITION CLUB APPLICATION/INQUIRY
-=====================================
-
-Subject: ${subject}
-Category: ${category || 'Not specified'}
-Name: ${name}
-Institution/Organization: ${institution || 'Not specified'}
-Address: ${address || 'Not specified'}
-Email: ${email}
-Contact Number: ${phone || 'Not specified'}
-
-Message/Remarks:
-${message}
-
-=====================================
-Submitted via Nutrition Club Website
-Date: ${new Date().toLocaleDateString()}
-Time: ${new Date().toLocaleTimeString()}
-            `;
-            
-            // Add specific requirements based on subject
-            if (subject === 'mentor') {
-                emailBody += `\n\nNote: For Academic institutions, a recommendation letter is required.
-For professionals, copy of the last academic certificate or a letter from the employer organization is required.`;
-            }
-            
-            if (subject === 'sponsor') {
-                emailBody += `\n\nSponsorship Details:
-- Types of Support: Please specify Cash or Kind
-- Reason for Sponsorship: ${message}
-- Activities to support: Events, Competitions, Boot Camp, Design Camp, NC Store, Nutri Garden, MHM Corner`;
-            }
-            
-            if (subject === 'patron') {
-                emailBody += `\n\nPatron Details:
-- Types of Support: Activity or Kind
-- Activities available: NC Store, Training, Workshop, Painting Competition, Boot Camp, Nutri Garden, MHM Corner, Others
-- Reason(s) to join as Patron: ${message}`;
-            }
-            
-            const mailtoLink = `mailto:nc@biid.org.bd?subject=${encodeURIComponent(subject + ' - ' + name)}&body=${encodeURIComponent(emailBody)}`;
-            window.location.href = mailtoLink;
-            
-            // Show success message
-            alert('Thank you for your interest in Nutrition Club! Your email client will open to send the message to nc@biid.org.bd');
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
         });
 
-        // Add sophisticated scroll animations
+        // Add scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1695,20 +1495,11 @@ For professionals, copy of the last academic certificate or a letter from the em
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
-                    
-                    // Add staggered animation for grid items
-                    const gridItems = entry.target.querySelectorAll('.feature-card, .program-item, .involvement-card, .activity-category');
-                    gridItems.forEach((item, index) => {
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'translateY(0)';
-                        }, index * 100);
-                    });
                 }
             });
         }, observerOptions);
 
-        // Observe all sections and grid items for animation
+        // Observe all sections for animation
         document.querySelectorAll('.section').forEach(section => {
             section.style.opacity = '0';
             section.style.transform = 'translateY(30px)';
@@ -1716,220 +1507,12 @@ For professionals, copy of the last academic certificate or a letter from the em
             observer.observe(section);
         });
 
-        // Initialize grid items with hidden state
-        document.querySelectorAll('.feature-card, .program-item, .involvement-card, .activity-category').forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        });
-
-        // Enhanced navigation highlighting
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 120;
-                if (window.pageYOffset >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Add green theme particles animation
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.style.cssText = `
-                position: fixed;
-                width: 4px;
-                height: 4px;
-                background: var(--accent-green);
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: -1;
-                opacity: 0.6;
-            `;
-            
-            particle.style.left = Math.random() * window.innerWidth + 'px';
-            particle.style.top = window.innerHeight + 'px';
-            
-            document.body.appendChild(particle);
-            
-            const animation = particle.animate([
-                { transform: 'translateY(0px) rotate(0deg)', opacity: 0.6 },
-                { transform: `translateY(-${window.innerHeight + 100}px) rotate(360deg)`, opacity: 0 }
-            ], {
-                duration: 8000 + Math.random() * 4000,
-                easing: 'linear'
-            });
-            
-            animation.onfinish = () => particle.remove();
-        }
-
-        // Create particles periodically
-        setInterval(createParticle, 2000);
-
-        // Enhanced hover effects for green theme
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-3px) scale(1.05)';
-            });
-            
-            btn.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Add loading animation completion
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '1';
-            document.body.style.transition = 'opacity 0.5s ease';
-        });
-
         // Initialize page with smooth entrance
         document.body.style.opacity = '0';
+        window.addEventListener('load', () => {
+            document.body.style.transition = 'opacity 0.5s ease';
+            document.body.style.opacity = '1';
+        });
     </script>
-
-    <style>
-        /* Additional green theme enhancements */
-        .nav-menu a.active {
-            background: var(--accent-green);
-            color: var(--forest-green);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(155, 197, 61, 0.4);
-        }
-        
-        /* Enhanced hover effects with green theme */
-        .feature-card:hover, 
-        .involvement-card:hover, 
-        .program-item:hover {
-            box-shadow: 0 25px 60px rgba(45, 80, 22, 0.25);
-            border-color: var(--accent-green);
-        }
-        
-        .activity-category:hover h4 {
-            background: linear-gradient(135deg, var(--accent-green), var(--sage-green));
-        }
-        
-        /* Loading states with green theme */
-        img {
-            transition: all 0.3s ease;
-        }
-        
-        img:hover {
-            transform: scale(1.02);
-            filter: brightness(1.1);
-        }
-        
-        /* Enhanced mobile responsiveness */
-        @media (max-width: 640px) {
-            .involvement-grid,
-            .features-grid,
-            .activities-grid,
-            .programs-list {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .elearning-features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .hero {
-                padding: 0 15px;
-            }
-            
-            .section {
-                padding: 50px 15px;
-            }
-            
-            .nav-menu {
-                background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .elearning-features {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .feature-card,
-            .involvement-card {
-                padding: 1.5rem;
-            }
-            
-            .contact-form,
-            .elearning-section {
-                padding: 2rem 1.5rem;
-            }
-        }
-        
-        /* Print styles */
-        @media print {
-            .header, .footer {
-                background: white !important;
-                color: black !important;
-            }
-            
-            .btn {
-                border: 1px solid black !important;
-            }
-        }
-        
-        /* High contrast mode support */
-        @media (prefers-contrast: high) {
-            :root {
-                --primary-green: #1a3d0a;
-                --accent-green: #7ba05b;
-            }
-        }
-        
-        /* Reduced motion support */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-        
-        /* Focus styles for accessibility */
-        button:focus,
-        input:focus,
-        select:focus,
-        textarea:focus,
-        a:focus {
-            outline: 3px solid var(--accent-green);
-            outline-offset: 2px;
-        }
-        
-        /* Selection colors */
-        ::selection {
-            background: var(--accent-green);
-            color: var(--forest-green);
-        }
-        
-        ::-moz-selection {
-            background: var(--accent-green);
-            color: var(--forest-green);
-        }
-    </style>
 </body>
 </html>
-      
